@@ -30,9 +30,14 @@ main :: IO ()
 main = do
   spockCfg <- defaultSpockCfg () PCNoDatabase ()
   runSpock 8080 (spock spockCfg app)
-  
+
+corsHeader = do
+  ctx <- getContext
+  setHeader "Access-Control-Allow-Origin" "*"
+  pure ctx
+
 app :: Api
-app = do
+app = prehook corsHeader $ do
   get "people" $ do
     json [ Person { name = "Dakota Rice", country = "Niger", city = "Oud-Turnhout", salary = "$36,738" }
          , Person { name = "Minerva Hooper", country = "Curaçao", city = "Sinaai-Waas", salary = "$23,789" }
