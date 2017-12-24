@@ -1,0 +1,11 @@
+runtime: php55
+service: web-ui
+handlers:
+  -
+    url: /(.*\.(js|css|png|jpg))$
+    static_files: \1
+    upload: .*\.(js|css|png|jpg)$
+  -
+    url: .*
+    static_files: index.html
+    upload: index.html

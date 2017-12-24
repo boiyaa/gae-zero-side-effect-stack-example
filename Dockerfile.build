@@ -1,0 +1,6 @@
+FROM haskell:8.0.2
+WORKDIR /workdir
+ADD . .
+RUN stack build
+EXPOSE 8080
+CMD ["stack", "exec", "gae-zero-side-effect-stack-example-exe"]

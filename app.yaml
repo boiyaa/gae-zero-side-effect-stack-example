@@ -1,0 +1,5 @@
+runtime: custom
+env: flex
+endpoints_api_service:
+  name: "gae-zero-side-effect-stack.appspot.com"
+  config_id: "2017-12-24r0"
